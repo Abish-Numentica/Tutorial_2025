@@ -21,10 +21,10 @@ firstArrayInput[firstArrayInput.length]=secondArrayInput[i]
 }
 
 
-
+//This loop to combine two arrays
 let sortingofArray=[];
 sortingofArray=firstArrayInput;
-for (let j = 0; j < sortingofArray.length - 1; j++) {                      //This loop to combine two arrays
+for (let j = 0; j < sortingofArray.length - 1; j++) {                      
             for (let k = 0; k < sortingofArray.length - 1; k++) {  
                 if (sortingofArray[k] > sortingofArray[ k+ 1]) { 
                     temp = sortingofArray[k];
@@ -33,7 +33,9 @@ for (let j = 0; j < sortingofArray.length - 1; j++) {                      //Thi
                 }
             }
         }
-for (let j = 0; j < sortingofArray.length - 1; j++) {                      //this loop is to sort the values in array  
+
+//this loop is to sort the values in array  
+for (let j = 0; j < sortingofArray.length - 1; j++) {                      
             for (let k = 0; k < sortingofArray.length - 1; k++) {
                 if (sortingofArray[k] > sortingofArray[ k+ 1]) {
                    let  temp = sortingofArray[k];

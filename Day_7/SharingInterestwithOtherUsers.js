@@ -55,16 +55,52 @@ const students = [
   },
 ];
 
-
-const bookMap = {};
-
-for (let i = 0; i < students.length; i++) {
-  const student = students[i];
-  for (let j = 0; j < student.books.length; j++) {
-    const book = student.books[j];
-    if (!bookMap[book]) {
-      bookMap[book] = [];
+function commonInterestInBooks(bookList) {
+  let bookInterest = {};
+  
+  // Step 1: Create a mapping of books to students
+  for (let i = 0; i < bookList.length; i++) {
+    for (let j = 0; j < bookList[i].books.length; j++) {
+      let book = bookList[i].books[j];
+      if (!bookInterest[book]) {
+        bookInterest[book] = [];
+      }
+      bookInterest[book].push(bookList[i].name);
     }
-    bookMap[book].push(student.name);
   }
+
+  // Step 2: Output common interests
+  console.log('Common Book Interest:');
+  for (let book in bookInterest) {
+    console.log(book + " - [" + bookInterest[book].join(', ') + "]");
+  }
+
+  // Step 3: Count shared interests for each student
+  let sharedCounts = {};
+  for (let k = 0; k < students.length; k++) {
+    sharedCounts[students[k].name] = 0;
+  }
+
+  for (let book in bookInterest) {
+    if (bookInterest[book].length > 1) {
+      for (let i = 0; i < bookInterest[book].length; i++) {
+        sharedCounts[bookInterest[book][i]]++;
+      }
+    }
+  }
+
+  // Step 4: Find the student with the most shared interests
+  let maxCount = 0;
+  let topSharer = "";
+  for (let name in sharedCounts) {
+    if (sharedCounts[name] > maxCount) {
+      maxCount = sharedCounts[name];
+      topSharer = name;
+    }
+  }
+
+  console.log("\nStudent who shares most interests: " + topSharer);
 }
+
+// Call the function
+commonInterestInBooks(students);
