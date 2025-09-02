@@ -27,8 +27,7 @@ uniqueData=convertedInput.split(" ")
 }
 let duplicateData=[];
 for(let i=0;i<uniqueData.length;i++){
-if(uniqueData[i].includes(convertedWord)
-){
+if(uniqueData[i]===convertedWord)){
     duplicateData.push(uniqueData[i])
     count++
     
